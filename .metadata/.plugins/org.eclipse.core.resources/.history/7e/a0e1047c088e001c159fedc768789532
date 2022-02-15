@@ -1,0 +1,8 @@
+package com.it.mapper;
+
+public interface CartMapper {
+	public List<CartmainVO> getListMain();
+	public List<CartsubVO> getListSub();
+	
+	
+}

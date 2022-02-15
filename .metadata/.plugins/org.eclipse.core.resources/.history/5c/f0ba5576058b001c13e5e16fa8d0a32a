@@ -1,8 +1,0 @@
-package com.it.controller;
-
-
-@RequestMapping("/")
-public class ShopController {
-	
-
-}

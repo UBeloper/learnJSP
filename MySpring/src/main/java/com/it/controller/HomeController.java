@@ -40,8 +40,9 @@ public class HomeController {
 		
 		String m_id = (String)session.getAttribute("m_id");
 		String m_name = (String)session.getAttribute("m_name");
-		log.info(m_id);
-		log.info(m_name);
+		/*
+		 * log.info(m_id); log.info(m_name);
+		 */
 		model.addAttribute("m_id", m_id);
 		model.addAttribute("m_name", m_name);
 

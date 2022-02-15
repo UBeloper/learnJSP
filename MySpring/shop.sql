@@ -173,4 +173,20 @@ select sum(p.p_price * os.os_cnt)
 			order by om_code desc limit 1);
 			
 desc tblmember;
+
+
+
+
+---------------------- 삭제하고 다시 --------------------------
+--delete from tblordersub;
+--delete from tblordermain;
+--delete from tblcartsub;
+--delete from tblcartmain;
+
+desc tblcartsub;
+desc tblcartmain;
+
+select * from tblcartmain;
+select * from tblcartsub;
+
 	
