@@ -1,11 +1,15 @@
 package com.it.mapper;
 
+import java.util.List;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.it.domain.CartdetailDTO;
 import com.it.domain.CartmainVO;
+import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
 
 import lombok.Setter;
@@ -63,7 +67,26 @@ public class CartMapperTest {
 		CartmainVO cartmain = new CartmainVO();
 		cartmain.setCm_code(1001);
 		mapper.deleteMain(cartmain);
-	
 	}
 	
+	// @Test
+	public void testCartDetail() {
+		CartmainVO cartmain = new CartmainVO();
+		cartmain.setCm_code(1003);
+		
+		List<CartdetailDTO> cartdetail = mapper.getListCartDetail(cartmain);
+//		log.info(cartdetail);
+		cartdetail.forEach(x -> log.info(x));
+						
+	}
+	
+	
+	// @Test
+	public void testCartTotal() {
+		CartmainVO cartmain = new CartmainVO();
+		cartmain.setCm_code(1003);
+		
+		CartmemberDTO cartmember = mapper.getCartTotal(cartmain);
+		log.info(cartmember);
+	}
 }
