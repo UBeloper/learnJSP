@@ -71,6 +71,46 @@ public class CartServiceImpl implements CartService {
 	public CartmemberDTO getCartTotal(CartmainVO cartmain) {
 		return mapper.getCartTotal(cartmain);
 	}
+
+	@Override
+	public void updateSub(CartsubVO cartsub) {
+		mapper.updateSub(cartsub);	
+	}
+
+	@Override
+	public void deleteSub(CartsubVO cartsub) {
+		mapper.deleteSub(cartsub);
+		CartmainVO cartmain = new CartmainVO();
+		cartmain.setCm_code(cartsub.getCm_code());
+		List<CartsubVO> tmp = mapper.getListCart(cartmain);
+		
+		if(tmp.size() == 0) { //장바구니에 상품이 1개도 없음
+			mapper.deleteMain(cartmain);
+		}	
+		
+		 // 확인용
+		  List<CartsubVO> tmp2 = mapper.getListCart(cartmain);
+		  System.out.println("tmp2 : " + tmp2);
+		  System.out.println("tmp2.size() : " + tmp.size()); //확인용
+		
+		
+		/*
+		 * if(tmp.size() < 1) { mapper.deleteMain(cartmain); }
+		 */
+		// 이게 맞다. tmp는 List형태이므로 아무것도 없을 때 0 
+	}
+
+	@Override
+	public void deleteMain(CartmainVO cartmain) {
+		mapper.deleteMain(cartmain);	
+	}
+
+	@Override
+	public void deletesuball(CartmainVO cartmain) {
+		mapper.deletesuball(cartmain);
+		mapper.deleteMain(cartmain);
+		
+	}
 	 
 
 	

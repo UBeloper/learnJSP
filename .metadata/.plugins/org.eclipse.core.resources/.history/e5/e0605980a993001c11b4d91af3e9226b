@@ -1,0 +1,15 @@
+package com.it.mapper;
+
+import java.util.List;
+
+import com.it.domain.OrdermainVO;
+
+public interface OrderMapper {
+	
+	public void insert(OrdermainVO ordermain);
+	public void update(OrdermainVO ordermain);
+	public void delete(OrdermainVO ordermain);
+	
+	public List<OrdermainVO> getList();
+	public OrdermainVO read(OrdermainVO ordermain);
+}

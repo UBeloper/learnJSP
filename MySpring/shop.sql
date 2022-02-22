@@ -185,8 +185,16 @@ desc tblmember;
 
 desc tblcartsub;
 desc tblcartmain;
+desc tblordermain;
+desc tblordersub;
 
 select * from tblcartmain;
 select * from tblcartsub;
+
+select * from tblordermain;
+select * from tblordersub;
+
+
+-- delete from tblcartmain where cm_code = 1003;
 
 	

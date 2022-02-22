@@ -1,7 +1,0 @@
-package com.it.service;
-
-public interface CartService {
-	
-	public List<CartmainVO> getListMain();
-	
-}

@@ -1,0 +1,29 @@
+package com.it.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.it.domain.CartmainVO;
+import com.it.mapper.CartMapper;
+import com.it.mapper.OrderMapper;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	@Setter(onMethod_ = @Autowired)
+	private OrderMapper ordermapper;
+	
+//	@Setter(onMethod_ = @Autowired)
+//	private CartMapper cartmapper;
+	
+	
+	@Override
+	public void orderproc(CartmainVO cartmain) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -14,6 +14,7 @@ import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
 import com.it.service.CartService;
 import com.it.service.MemberService;
+import com.it.service.OrderService;
 import com.it.service.ProductService;
 
 import lombok.Setter;
@@ -32,6 +33,9 @@ public class ShopController {
 
 	@Setter(onMethod_ = @Autowired)
 	private CartService cartservice;
+	
+	@Setter(onMethod_ = @Autowired)
+	private OrderService orderservice;
 
 	@GetMapping("/list")
 	public void list(Model model) {
@@ -89,6 +93,8 @@ public class ShopController {
 				cartmember.setM_name(m_name);
 				
 				model.addAttribute("cartmember", cartmember);
+				model.addAttribute("cm_code", cartmain.getCm_code());
+				// delete에 사용할 cm_code를 받아옴. 장바구니 세부항목 삭제시 필요.
 				
 			} else {
 				log.info("장바구니 내용 없음");
@@ -97,7 +103,9 @@ public class ShopController {
 
 			log.info("로그인 상태 : " + m_id);
 //			return "redirect:/shop/cartinfo";
-			return "shop/cartinfo"; 
+			return "shop/cartinfo";
+			
+			
 			// 자체적으로 메서드를 훑고나서 그냥 페이지만 return vs 메서드를 훑고 내려오는거(redirect) ==>>
 			// 위의 IF문부터 쭉하고 밑에 내려온거니까 REDIRECT하면 "또" 컨트롤러의 메서드를 훑는거기 때문에 부적절
 			// 즉 자기자신에게 return direct하는거자체가 redirect가 맞지 않지 당연히.
@@ -105,10 +113,47 @@ public class ShopController {
 		} else {
 			log.info("로그아웃 상태");
 //			return "redirect:/member/login"; //컨트롤러의 메서드를 호출 후에 JSP로
-			return "member/login";
+			return "redirect:/member/login";
 			// 컨트롤러 통과여부가 헷갈리면 redirect써도 상관 없음.
 		}
 
 	}
+	
+	
+	@PostMapping("/cartupdate")
+	public String cartupdate(CartsubVO cartsub) {
+		cartservice.updateSub(cartsub);
+		return "redirect:/shop/cartinfo";
+	}
+	
+	
+	  @GetMapping("/cartdelete") 
+	  public String cartdelete(CartsubVO cartsub) {
+//		  log.info(cartsub); // cm_code가 같이 넘어오도록 위의 cartinfo에 cm_code를 알 수있는 model.addAttribute추가
+		  cartservice.deleteSub(cartsub);
+		  
+		  return "redirect:/shop/cartinfo";
+		  
+	  }
+	  
+	  @GetMapping("/cartdeleteall")
+	  public String cartdeleteall(CartmainVO cartmain) {
+		  log.info(cartmain);
+		  cartservice.deletesuball(cartmain);
+		  return "redirect:/shop/cartinfo";
+		  
+	  }
+	  
+	  @GetMapping("/orderinfo")
+	  public String order(HttpSession session, CartmainVO cartmain) {
+		  // log.info("여기 " + cartmain);
+		  String m_id = (String)session.getAttribute("m_id");
+		  cartmain.setM_id(m_id);
+		  // log.info("여기2 " + cartmain);
+		  
+		  orderservice.orderproc(cartmain);
+		  return "/shop/orderinfo";
+	  }
+	 
 
 }

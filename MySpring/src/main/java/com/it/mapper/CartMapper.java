@@ -34,6 +34,8 @@ public interface CartMapper {
 	public void deleteMain(CartmainVO cartmain);
 	public void deleteSub(CartsubVO cartsub);
 	
+	public void deletesuball(CartmainVO cartmain);
+	
 	
 	
 }

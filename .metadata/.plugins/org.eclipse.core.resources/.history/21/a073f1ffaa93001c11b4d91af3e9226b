@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.OrderMapper">
+	<insert id="insertMain">
+		INSERT INTO tblordermain (m_id) values (#{m_id})
+	</insert>
+	
+	<insert id="insertSub">
+		INSERT INTO tblordersub (om_code, p_code, os_cnt) 
+		VALUES (#{om_code}, #{p_code}, #{os_cnt})
+	</insert>
+	
+	<select id="readMainID" resultType="com.it.domain.OrdermainVO">
+		SELECT * FROM tblordermain WHERE m_id = #{m_id} ORDER BY om_code DESC 
+	</select>
+	
+</mapper>

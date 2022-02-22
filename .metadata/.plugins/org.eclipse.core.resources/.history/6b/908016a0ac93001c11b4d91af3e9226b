@@ -1,0 +1,41 @@
+package com.it.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.it.domain.CartmainVO;
+import com.it.mapper.CartMapper;
+import com.it.mapper.OrderMapper;
+
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	@Setter(onMethod_ = @Autowired)
+	private OrderMapper ordermapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private CartMapper cartmapper;
+	
+	
+	@Override
+	public void orderproc(CartmainVO cartmain) {
+		// 1. cm_code를 사용하여 장바구니 sub 조회
+		cartmain = cartmapper.readMain(cartmain);
+		// 2. 주문 main을 insert
+		
+		// 3. om_code 조회
+		
+		// 4. ordersub에 insert
+		
+		// 5. 장바구니 sub 삭제(cm_code활용)
+		
+		// 6. 장바구니 main 삭제(cm_code활용)
+		
+		
+	}
+
+}

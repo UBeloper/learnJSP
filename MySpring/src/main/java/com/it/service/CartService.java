@@ -19,6 +19,14 @@ public interface CartService {
 	public List<CartdetailDTO> getListCartDetail(CartmainVO cartmain);
 
 	public CartmemberDTO getCartTotal(CartmainVO cartmain);
+	
+	public void updateSub(CartsubVO cartsub);
+	
+	public void deleteSub(CartsubVO cartsub);
+	
+	public void deleteMain(CartmainVO cartmain);
+	
+	public void deletesuball(CartmainVO cartmain);
 		
 	/*
 	 * public List<CartmainVO> getListMain(); public List<CartsubVO> getListSub();
