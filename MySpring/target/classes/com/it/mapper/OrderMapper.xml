@@ -16,4 +16,17 @@
 		SELECT * FROM tblordermain WHERE m_id = #{m_id} ORDER BY om_code DESC LIMIT 1
 	</select>
 	
-</mapper>
+	<select id="getOrderdetail" resultType="com.it.domain.OrderdetailDTO">
+		SELECT os.os_code, p.p_code, p.p_name, p.p_price, os.os_cnt, p.p_price*os.os_cnt as os_money 
+		FROM tblordersub os, tblproduct p
+		WHERE os.p_code = p.p_code
+		AND os.om_code = #{om_code}
+	</select>
+		
+		<select id="getOrdertotal" resultType="com.it.domain.OrdermemberDTO">
+		SELECT sum(p.p_price*os.os_cnt) as om_total 
+		FROM tblordersub os, tblproduct p 
+		WHERE os.p_code = p.p_code 
+		and os.om_code = #{om_code} 
+	 	</select>
+	</mapper>

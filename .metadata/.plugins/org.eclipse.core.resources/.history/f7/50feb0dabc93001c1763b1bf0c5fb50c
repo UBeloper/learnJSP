@@ -1,0 +1,12 @@
+package com.it.service;
+
+import com.it.domain.CartmainVO;
+import com.it.domain.OrdersubVO;
+
+public interface OrderService {
+	
+	public void orderproc(CartmainVO cartmain);
+	
+	public List<OrdersubVO> getListSub(CartmainVO cartmain);
+	
+}

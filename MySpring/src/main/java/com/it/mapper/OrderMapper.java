@@ -1,6 +1,10 @@
 package com.it.mapper;
 
+import java.util.List;
+
+import com.it.domain.OrderdetailDTO;
 import com.it.domain.OrdermainVO;
+import com.it.domain.OrdermemberDTO;
 import com.it.domain.OrdersubVO;
 
 public interface OrderMapper {
@@ -13,7 +17,11 @@ public interface OrderMapper {
 //	public void update(OrdermainVO ordermain);
 //	public void delete(OrdermainVO ordermain);
 	
-//	public List<OrdermainVO> getList();
+	public List<OrderdetailDTO> getOrderdetail(OrdermainVO ordermain);
+	
+	public OrdermemberDTO getOrdertotal(OrdermainVO ordermain);
 //	public OrdermainVO read(OrdermainVO ordermain);
+	
+//	public OrdermemberDTO 
 	
 }

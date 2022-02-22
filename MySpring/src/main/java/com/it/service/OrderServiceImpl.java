@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.it.domain.CartmainVO;
 import com.it.domain.CartsubVO;
+import com.it.domain.OrderdetailDTO;
 import com.it.domain.OrdermainVO;
+import com.it.domain.OrdermemberDTO;
 import com.it.domain.OrdersubVO;
 import com.it.mapper.CartMapper;
 import com.it.mapper.OrderMapper;
@@ -65,4 +67,22 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 
+	@Override
+	public List<OrderdetailDTO> getOrderdetail(OrdermainVO ordermain) {
+		return ordermapper.getOrderdetail(ordermain);
+		
+	}
+
+	@Override
+	public OrdermainVO readMainID(OrdermainVO ordermain) {
+		return ordermapper.readMainID(ordermain);
+	}
+
+	@Override
+	public OrdermemberDTO getOrdertotal(OrdermainVO ordermain) {
+		
+		return ordermapper.getOrdertotal(ordermain);
+	}
+
+	   
 }
