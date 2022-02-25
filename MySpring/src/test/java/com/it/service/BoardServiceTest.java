@@ -1,12 +1,12 @@
 package com.it.service;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.it.domain.BoardVO;
+import com.it.domain.PageDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -27,9 +27,10 @@ public class BoardServiceTest {
 		log.info(board);
 	}
 	
-	@Test
+	// @Test
 	public void testGetList() {
-		service.getList().forEach(board -> log.info(board));
+		PageDTO page = new PageDTO();
+		service.getList(page).forEach(board -> log.info(board));
 	}
 	
 	//@Test

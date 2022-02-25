@@ -197,4 +197,18 @@ select * from tblordersub;
 
 -- delete from tblcartmain where cm_code = 1003;
 
+
+-- == 페이징 =======================================
+
+-- 페이징처리할 페이지들 복붙생성
+insert into tblboard(b_subject, b_contents, b_name)
+select b_subject, b_contents, b_name from tblboard;
+
+select count(*) from tblboard;
+
+-- 페이징 시뮬레이션
+select * from tblboard order by b_num desc limit 0, 10;
+select * from tblboard order by b_num desc limit 10, 10;
+select * from tblboard order by b_num desc limit 20, 10;
+select * from tblboard order by b_num desc limit 30, 10;
 	

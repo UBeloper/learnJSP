@@ -9,10 +9,11 @@
     <fullyQualifiedTypeName name="com.it.domain.CartmainVO"/>
     <fullyQualifiedTypeName name="com.it.domain.CartmemberDTO"/>
     <fullyQualifiedTypeName name="sun.print.resources.serviceui"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="com.it.domain.OrdermainVO"/>
     <fullyQualifiedTypeName name="com.it.domain.OrderdetailDTO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.it.domain.OrdermainVO"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.it.domain.PageViewDTO"/>
 </qualifiedTypeNameHistroy>

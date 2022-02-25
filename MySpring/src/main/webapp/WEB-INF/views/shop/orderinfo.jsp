@@ -17,6 +17,7 @@
 				<a href="/shop/list">상품 리스트</a>
 			</h6>
 		</div>
+		
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table table-bordered" width="100%" cellspacing="0">
@@ -33,7 +34,7 @@
 					</thead>
 
 					<tbody>
-
+					
 						<c:forEach items="${list}" var="ordersub">
 							<tr>
 								<td>${ordersub.p_name}</td>
@@ -48,7 +49,7 @@
 
 						<tr>
 							<th colspan="6" style="text-align: center">
-								회원 ${ordermember.m_name} 님, 주문번호 : ${om_code}, 총금액 : <fmt:formatNumber
+								회원 ${ordermember.m_name} 님, 주문번호 : ${ordermember.om_code}, 총금액 : <fmt:formatNumber
 									value="${ordermember.om_total}" pattern="#,###"></fmt:formatNumber>원
 								<%-- 아니면 이렇게도 가능 <fmt: value="" pattern="" /> --%>
 							
@@ -56,7 +57,6 @@
 							<a href="/shop/cartdeleteall?cm_code=${cm_code}">상품 모두 삭제</a>
 							<a href="/shop/orderinfo?cm_code=${cm_code}">상품 주문</a>
 							</c:if> --%>
-							
 							</th>
 						</tr>
 						

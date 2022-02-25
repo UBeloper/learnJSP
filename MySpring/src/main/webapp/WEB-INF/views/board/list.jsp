@@ -35,11 +35,17 @@
                                     			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.b_date}"/>
                                     		</tr>
                                     	</c:forEach>
+                                    	
+                                    	<c:forEach var="num" begin="${pageview.startPage}" end="${pageview.endPage}">                                    	
+                                    		<a href="#">[${num}]</a>
+                                    	</c:forEach>
+                                    	
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+                    
 
                 </div>
                 <!-- /.container-fluid -->

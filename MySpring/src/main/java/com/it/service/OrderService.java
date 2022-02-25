@@ -9,7 +9,7 @@ import com.it.domain.OrdermemberDTO;
 
 public interface OrderService {
 	
-	public void orderproc(CartmainVO cartmain);
+	public OrdermainVO orderproc(CartmainVO cartmain);
 	
 	public List<OrderdetailDTO> getOrderdetail(OrdermainVO ordermain);
 	

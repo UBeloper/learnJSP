@@ -15,6 +15,7 @@
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/product/insert">상품등록</a>
+				<a href="/shop/cartinfo">장바구니로</a>
 			</h6>
 		</div>
 		<div class="card-body">

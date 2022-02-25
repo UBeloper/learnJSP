@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.BoardVO;
+import com.it.domain.PageDTO;
+import com.it.domain.PageViewDTO;
 import com.it.service.BoardService;
 
 import lombok.Setter;
@@ -22,9 +24,19 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) {  //Model 객체는 VO객체를 저장해서 jsp 파일로 전송, 현재는 비어있음
+	public void list(Model model, PageDTO page) {  //Model 객체는 VO객체를 저장해서 jsp 파일로 전송, 현재는 비어있음
 		//list.jsp 에 데이터를 전달해야 함
-		model.addAttribute("list", service.getList());  //getList로 조회한 모든 내용을 list변수로 전달
+		log.info(page);
+		model.addAttribute("list", service.getList(page));  //getList로 조회한 모든 내용을 list변수로 전달
+//		log.info(page.getPageAmount());
+		log.info(page);
+		int total = service.getTotalCount(); // 전체 레코드 개수
+		
+		PageViewDTO pageview = new PageViewDTO(page, total);
+		log.info("pageview :: " + pageview);
+		model.addAttribute("pageview", pageview);
+		
+		
 	}
 	
 	@GetMapping("/insert")
@@ -78,7 +90,5 @@ public class BoardController {
 		service.delete(board);
 		return "redirect:/board/list";
 	}
-	
-	
-
+		
 }

@@ -1,7 +1,0 @@
-package com.it.domain;
-
-
-@Data
-public class CartmemberDTO {
-
-}

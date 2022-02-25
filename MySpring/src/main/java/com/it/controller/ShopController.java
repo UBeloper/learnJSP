@@ -1,7 +1,5 @@
 package com.it.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.it.domain.CartmainVO;
 import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
-import com.it.domain.OrderdetailDTO;
 import com.it.domain.OrdermainVO;
 import com.it.domain.OrdermemberDTO;
 import com.it.service.CartService;
@@ -75,13 +72,13 @@ public class ShopController {
 		String m_id = (String) session.getAttribute("m_id");
 		String m_name = (String) session.getAttribute("m_name");
 		
-		if (m_id != null) {
+		if (m_id != null) { // 접속되어 있다는 뜻이고,
 			// 세션아이디를 이용해서 cm_code를 조회해야 함
 			CartmainVO cartmain = new CartmainVO();
 			cartmain.setM_id(m_id);
 			cartmain = cartservice.readMainID(cartmain);
 
-			if (cartmain != null) {
+			if (cartmain != null) { // 해당 id 장바구니가 있느냐 없느냐.
 //				int cm_code = cartmain.getCm_code(); // 로그인 된 사용자의 아이디를 사용하는 cm_code
 				// 가방이 파라미터라 뽑아낼 필요 없었는데 함.
 				// 장바구니에 내용이 없는 경우.
@@ -153,15 +150,20 @@ public class ShopController {
 	  public String order(HttpSession session, CartmainVO cartmain, Model model) {
 		  String m_id = (String)session.getAttribute("m_id");
 		  String m_name = (String)session.getAttribute("m_name");
-		  log.info("1 " + m_id);
+		 			
+		  if (m_id != null) { 
+
 		  cartmain.setM_id(m_id);
-		  orderservice.orderproc(cartmain);
+		  OrdermainVO ordermain = orderservice.orderproc(cartmain);
 		  
-		  OrdermainVO ordermain = new OrdermainVO();
-		  ordermain.setM_id(m_id);
-		  ordermain = orderservice.readMainID(ordermain);
+//		  orderservice.orderproc(cartmain); // 이런식에서 ->
+		  // -> orderproc의 반환타입을 OrdermainVO로 바꿔서 om_code를 반환하는 방법 사용
+		  // => 서류 하나 떼러간김에 다른 것도 떼어오기
 		  
-		  log.info("2 " + ordermain);
+		  /* 위의 한줄에 이건 무의미 */
+		  // OrdermainVO ordermain = new OrdermainVO();
+		  // ordermain.setM_id(m_id);
+		  // ordermain = orderservice.readMainID(ordermain);
 		  
 		  OrdermemberDTO ordermember = new OrdermemberDTO();
 		  ordermember.setOm_total(orderservice.getOrdertotal(ordermain).getOm_total());
@@ -169,13 +171,17 @@ public class ShopController {
 		  ordermember.setM_name(m_name);
 		  ordermember.setM_id(m_id);
 		  
-		  log.info("3 " + ordermember);
 		  
-		  List<OrderdetailDTO> orderdetail = orderservice.getOrderdetail(ordermain);
-		  model.addAttribute("list", orderdetail);
+//		  List<OrderdetailDTO> orderdetail = orderservice.getOrderdetail(ordermain);
+//		  model.addAttribute("list", orderdetail);
+//		  그냥 한줄로 하자.
+		  model.addAttribute("list", orderservice.getOrderdetail(ordermain));
+		 
 		  model.addAttribute("ordermember", ordermember);
 		  
-		  log.info("4 " + orderdetail);
+		  } else {
+			  return "/member/login";
+		  }
 		  
 		  return "/shop/orderinfo";
 	  }

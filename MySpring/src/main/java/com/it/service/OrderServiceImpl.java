@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 	
 	/* 전부처리!! */
 	@Override
-	public void orderproc(CartmainVO cartmain) {
+	public OrdermainVO orderproc(CartmainVO cartmain) { //om_code 반환 (주문리스트에서 사용)
 		// 1. 주문 main을 insert
 		// 2. cm_code를 사용하여 장바구니 sub 조회
 			// cm_code를 이용해서 cartsub 내용을 뽑아내는 메서드를 찾아서
@@ -54,23 +54,23 @@ public class OrderServiceImpl implements OrderService {
 			ordersub.setP_code(item.getP_code());
 			ordersub.setOs_cnt(item.getCs_cnt());
 			
-			 System.out.println("이쯤의 ordersub : " + ordersub);
+			 // System.out.println("이쯤의 ordersub : " + ordersub);
 			
 			// 4. ordersub에 insert
 			ordermapper.insertSub(ordersub);
 		}
-		
 		// 5. 장바구니 sub 삭제(cm_code활용)
 			cartmapper.deletesuball(cartmain);
 		// 6. 장바구니 main 삭제(cm_code활용)
 			cartmapper.deleteMain(cartmain);
-		
+			
+			// om_code를 반환			
+			return ordermain;
 	}
 
 	@Override
 	public List<OrderdetailDTO> getOrderdetail(OrdermainVO ordermain) {
 		return ordermapper.getOrderdetail(ordermain);
-		
 	}
 
 	@Override
@@ -80,7 +80,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrdermemberDTO getOrdertotal(OrdermainVO ordermain) {
-		
 		return ordermapper.getOrdertotal(ordermain);
 	}
 

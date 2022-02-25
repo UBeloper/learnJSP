@@ -1,0 +1,24 @@
+package com.it.domain;
+
+import lombok.Data;
+
+@Data
+public class PageViewDTO {
+	private int startPage;
+	private int endPage;
+	private boolean prev;
+	private boolean next;
+	
+	private int total;
+	
+	PageDTO page;
+	// 이 정보로 나머지 변수를 계산해야하니까.
+	
+	public PageViewDTO(PageDTO page, int total) {
+		this.page = page;
+		this.total = total;
+		
+		this.endPage = (int)Math.ceil(page.getPageNum() / page.getPageAmount())) + page.getPageAmount();
+	}
+	
+}
