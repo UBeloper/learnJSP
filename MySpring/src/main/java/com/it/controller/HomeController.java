@@ -10,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.log4j.Log4j;
 
@@ -27,6 +29,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -40,13 +43,21 @@ public class HomeController {
 		
 		String m_id = (String)session.getAttribute("m_id");
 		String m_name = (String)session.getAttribute("m_name");
+		
 		/*
 		 * log.info(m_id); log.info(m_name);
 		 */
+		
 		model.addAttribute("m_id", m_id);
 		model.addAttribute("m_name", m_name);
 
 		return "home";
+	}
+	
+	@GetMapping("/mytest")
+	public String mytest(@RequestParam("age") int age, Model model) {
+		model.addAttribute("mynum", age);
+		return "/mytest";
 	}
 	
 }

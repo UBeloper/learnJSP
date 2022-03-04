@@ -6,9 +6,10 @@ import lombok.Data;
 public class PageViewDTO {
 	private int startPage;
 	private int endPage;
+	private int realEndPage;
 	private boolean prev;
 	private boolean next;
-	
+
 	private int total;
 	
 	PageDTO page;
@@ -27,17 +28,20 @@ public class PageViewDTO {
 		this.page = page;
 		this.total = total;
 				
-		this.endPage = (int)Math.ceil(page.getPageNum() / (double)page.getPageAmount()) * page.getPageAmount();
-		this.startPage = this.endPage - page.getPageAmount() + 1;
+		this.endPage = (int)Math.ceil(page.getPageNum() / (double)page.getPageAmount() ) * 10;
+		// 10, 20, 30 ...
+		this.startPage = this.endPage - 10 + 1;
 		// 1, 11, 21 ...
 		
-		int realEndPage = (int)Math.ceil(total / page.getPageAmount());
-		if(realEndPage < this.endPage) {
-			this.endPage = realEndPage;
+		this.realEndPage = (int)Math.ceil(total / page.getPageAmount());
+		if(this.realEndPage < this.endPage) {
+			this.endPage = this.realEndPage;
 		}
 		
-		this.prev = this.startPage > 1; //최소한 시작이 11페이지일 경우 참 (페이지 그룹 째로 이동)
-		this.next = this.endPage < realEndPage;
+		this.prev = this.startPage > 1;  // 최소한 시작이 11페이지일 경우 참 (페이지 그룹 째로 이동)
+		this.next = this.endPage < this.realEndPage;
+		
+		
 	}
 	
 }

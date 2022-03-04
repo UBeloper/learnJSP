@@ -1,9 +1,0 @@
-package com.it.mapper;
-
-
-public interface OrderMapper {
-	
-	public void insert(OrdermainVO ordermain);
-	public void insert(OrdermainVO ordermain);
-	
-}

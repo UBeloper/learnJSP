@@ -7,6 +7,18 @@ use webjava;
 grant all privileges on webjava.* to javauser@localhost identified by 'webjava';
 */
 
+/*tbladmin테이블*/
+create table tbladmin (
+	a_id varchar(50) not null primary key,
+	a_passwd varchar(50) not null,
+	a_name varchar(50) not null,
+	a_rdate datetime not null default sysdate(),
+	a_udate datetime not null default sysdate()
+	-- 업데이트 쿼리를 사용해서 udate을 집어넣어주면 되겠지.
+);
+
+-- insert into tbladmin(a_id, a_passwd, a_name) values ('admin', '1234', '관리자');
+
 /* tblboard 테이블 */
 create table tblboard (
  b_num int not null primary key AUTO_INCREMENT,
@@ -211,4 +223,5 @@ select * from tblboard order by b_num desc limit 0, 10;
 select * from tblboard order by b_num desc limit 10, 10;
 select * from tblboard order by b_num desc limit 20, 10;
 select * from tblboard order by b_num desc limit 30, 10;
-	
+
+-- ========== notice ==========
