@@ -2,18 +2,18 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="com.it.domain.BoardVO"/>
-    <fullyQualifiedTypeName name="com.it.domain.MemberVO"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="com.it.domain.CartmainVO"/>
     <fullyQualifiedTypeName name="com.it.domain.CartmemberDTO"/>
     <fullyQualifiedTypeName name="sun.print.resources.serviceui"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.it.domain.OrderdetailDTO"/>
     <fullyQualifiedTypeName name="com.it.domain.OrdermainVO"/>
     <fullyQualifiedTypeName name="com.it.domain.PageViewDTO"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.it.domain.MemberVO"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
 </qualifiedTypeNameHistroy>
