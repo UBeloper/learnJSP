@@ -28,7 +28,6 @@
                                     <!-- Product price-->
                                     <fmt:formatNumber type="number" maxFractionDigits="3"
                                     value="${list.p_price}" />원
-                                    
                                 </div>
                             </div>
                             
