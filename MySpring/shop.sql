@@ -1,11 +1,49 @@
 /* 쇼핑몰 구현 */
 use webjava;
+use mysql;
 
 /* 데이터베이스 생성
 -- create database webjava default character set utf8;
 -- 유저 생성 및 암호 지정 
 grant all privileges on webjava.* to javauser@localhost identified by 'webjava';
 */
+
+/* 관리자 테이블 */
+
+-- drop table tbladmin;
+
+create table tbladmin (
+	a_id varchar(50) not null primary key, -- 아이디 
+	a_passwd varchar(500) not null, -- 비밀번호
+	a_name varchar(50) not null, -- 성명
+	a_rdate datetime not null default sysdate(),
+	a_udate datetime not null default sysdate()
+);
+
+insert into tbladmin(a_id, a_passwd, a_name) 
+values ('admin', hex(aes_encrypt('tiger123', sha2('123!', 512))), '관리자');
+
+insert into tbladmin(a_id, a_passwd, a_name) 
+values ('subadmin', hex(aes_encrypt('12345', sha2('123!', 512))), '보조관리자');
+
+
+select * from tbladmin;
+
+select * from tbladmin
+where a_id = 'subadmin'
+AND a_passwd = hex(aes_encrypt('12345', sha2('123!', 512)));
+
+-- select * from tbladmin 
+-- where a_passwd = aes_decrypt(unhex('8EFFACCE165EE382A4365A5DFA6DDD42'), sha2('123!', 512));
+
+-- hex 16진수 문자값으로 표현
+-- select hex(aes_encrypt('tiger123', sha2('aabbcc', 512)));
+-- 123! (키값이라고한다. 프로그래머가 정한 임의 값) 얘를 추가해서 암호화를 시키는 것.
+-- select aes_decrypt(unhex('0x11c629b7e653ad82352bccfab2c4174f'), '123!');
+
+
+
+
 
 /*tbladmin테이블*/
 create table tbladmin (
@@ -27,7 +65,19 @@ create table tblboard (
  b_name varchar(50) not null,
  b_date datetime not null default sysdate()
 );
-INSERT INTO tblboard (b_subject, b_name, b_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
+-- INSERT INTO tblboard (b_subject, b_name, b_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
+
+/* tblboard2  <== 업로드 파일 저장 연습 */
+create table tblboard2 (
+ b_num int not null primary key AUTO_INCREMENT,
+ b_subject varchar(100) not null,
+ b_contents varchar(2000) not null,
+ b_file varchar(200), -- 업로드 파일
+ b_name varchar(50) not null,
+ b_date datetime not null default sysdate()
+);
+
+-- drop table tblboard2;
 
 /* tblnotice 테이블 */
 create table tblnotice (
@@ -47,6 +97,8 @@ create table tblmember (
 	m_rdate datetime not null default sysdate(),
 	m_udate datetime not null default sysdate()
 );
+
+alter table tblmember auto_increment=1001;
 
 /* 상품 테이블 */
 create table tblproduct (
@@ -126,8 +178,14 @@ insert into tblproduct (p_name, p_price) values ('삼성냉장고200리터', 100
 insert into tblproduct (p_name, p_price) values ('엘지세탁기10리터', 800000);
 insert into tblproduct (p_name, p_price) values ('농심새우깡', 2000);
 insert into tblproduct (p_name, p_price) values ('롯데콘칩', 1000);
+insert into tblproduct (p_name, p_price) values ('참이슬360ml', 2000);
+insert into tblproduct (p_name, p_price) values ('종이컵100개입', 5000);
+insert into tblproduct (p_name, p_price) values ('매일우유1L', 4000);
+insert into tblproduct (p_name, p_price) values ('초코파이12개입', 5000);
+
 select * from tblproduct;
 
+-- 카트 임시데이터 -- 
 insert into tblcartmain (m_id) values ('tiger');
 insert into tblcartmain (m_id) values ('lion');
 select * from tblcartmain;
@@ -138,6 +196,8 @@ insert into tblcartsub (cm_code, p_code, cs_cnt) values (1002, 1002, 1);
 insert into tblcartsub (cm_code, p_code, cs_cnt) values (1002, 1004, 3);
 
 select * from tblcartsub;
+
+--
 
 /* tiger 의 장바구니 내역을 조회 */
 select cm.cm_code, cm.m_id, m.m_name, cs.p_code, p.p_name, 
