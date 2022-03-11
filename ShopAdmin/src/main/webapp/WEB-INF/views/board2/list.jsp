@@ -14,8 +14,8 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">
-				<a href="/board/insert">게시판글쓰기</a> <br>
-				<a>단일변수 테스트 : ${user}, ${age}</a>
+				<a href="/board2/insert">게시판글쓰기</a> <br>
+				<%-- <a>단일변수 테스트 : ${user}, ${age}</a> --%>
 			</h6>
 		</div>
 		<div class="card-body">
@@ -26,6 +26,7 @@
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
+							<th>첨부파일</th>
 							<th>작성일</th>
 						</tr>
 					</thead>
@@ -35,33 +36,33 @@
 							<tr>
 								<td>${board.b_num}</td>
 								<td><a
-									href="/board/view?b_num=${board.b_num}&pageNum=${pageview.page.pageNum}">${board.b_subject}</a></td>
+									href="/board2/view?b_num=${board.b_num}&pageNum=${pageview.page.pageNum}">${board.b_subject}</a></td>
 								<td>${board.b_name}</td>
+								<td><a href="/board2/download?b_num=${board.b_num}">${board.b_file}</a></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
 										value="${board.b_date}" />
 							</tr>
 						</c:forEach>
 
 						<c:if test="${pageview.prev}">
-									<a href="/board/list?pageNum=1">[<<]</a>
-									<a href="/board/list?pageNum=${pageview.startPage-1}">[prev]</a> &nbsp;
+									<a href="/board2/list?pageNum=1">[<<]</a>
+									<a href="/board2/list?pageNum=${pageview.startPage-1}">[prev]</a> &nbsp;
 								</c:if> <!-- test자체가 참거짓을 판단하는 문법 -->
-						
 
 						<c:forEach var="num" begin="${pageview.startPage}" end="${pageview.endPage}">
 							<c:if test="${pageview.page.pageNum == num}">
 							<b>
-							<a href="/board/list?pageNum=${num}">[${num}]</a> &nbsp;
+							<a href="/board2/list?pageNum=${num}">[${num}]</a> &nbsp;
 							</b>
 							</c:if>
 							<c:if test="${pageview.page.pageNum != num}">
-							<a href="/board/list?pageNum=${num}">[${num}]</a> &nbsp;
+							<a href="/board2/list?pageNum=${num}">[${num}]</a> &nbsp;
 							</c:if>
                         </c:forEach>
 
 						<c:if test="${pageview.next}">
-							<a href="/board/list?pageNum=${pageview.endPage + 1}">[next]</a>
-							<a href="/board/list?pageNum=${pageview.realEndPage}">[>>]</a>
+							<a href="/board2/list?pageNum=${pageview.endPage + 1}">[next]</a>
+							<a href="/board2/list?pageNum=${pageview.realEndPage}">[>>]</a>
 						</c:if>
 
 					</tbody>

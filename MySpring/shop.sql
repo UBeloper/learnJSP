@@ -77,6 +77,8 @@ create table tblboard2 (
  b_date datetime not null default sysdate()
 );
 
+select * from tblboard2;
+
 -- drop table tblboard2;
 
 /* tblnotice 테이블 */
