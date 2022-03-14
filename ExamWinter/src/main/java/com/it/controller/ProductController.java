@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.it.domain.PageDTO;
+import com.it.domain.PageViewDTO;
 import com.it.domain.ProductVO;
 import com.it.service.ProductService;
 
@@ -30,8 +32,14 @@ public class ProductController {
 	private ProductService service;
 	
 	@GetMapping("/list")
-	public void callListPage(Model model) {  //Model 객체는 VO객체를 저장해서 jsp 파일로 전송
-		model.addAttribute("list", service.getList());  //getList로 조회한 모든 내용을 list변수로 전달
+	public void callListPage(Model model, PageDTO page) {  //Model 객체는 VO객체를 저장해서 jsp 파일로 전송
+		model.addAttribute("list", service.getList(page));  //getList로 조회한 모든 내용을 list변수로 전달
+		
+		int total = service.getTotalCount(); // 전체 레코드 개수
+		log.info(total);
+		PageViewDTO pageview = new PageViewDTO(page, total);
+		log.info("pageview :: " + pageview);
+	
 	}
 	
 	@GetMapping("/view")

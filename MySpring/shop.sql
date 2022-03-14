@@ -123,6 +123,8 @@ create table tblproduct2 (
 	p_udate datetime not null default sysdate()
 )
 
+alter table tblproduct2 auto_increment=1001;
+
 drop table tblproduct2;
 select * from tblproduct2;
 

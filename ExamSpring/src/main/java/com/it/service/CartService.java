@@ -27,4 +27,5 @@ public interface CartService {
 	
 	public void deletesuball(CartmainVO cartmain);
 	
+	public int cartCnt(CartmainVO cartmain);
 }

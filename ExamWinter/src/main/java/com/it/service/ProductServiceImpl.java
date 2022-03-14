@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.it.domain.PageDTO;
 import com.it.domain.ProductVO;
 import com.it.mapper.ProductMapper;
 
@@ -28,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public List<ProductVO> getList() {
-		return mapper.getList();
+	public List<ProductVO> getList(PageDTO page) {
+		return mapper.getList(page);
 	}
 	
 	@Override
@@ -41,6 +42,15 @@ public class ProductServiceImpl implements ProductService {
 	public void delete(ProductVO product) {
 		mapper.delete(product);
 	}
+
+	@Override
+	public int getTotalCount() {
+		
+		return mapper.getTotalCount();
+	}
+	
+	
+
 	
 
 }

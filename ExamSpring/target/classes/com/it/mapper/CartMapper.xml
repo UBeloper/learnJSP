@@ -69,4 +69,9 @@
 		AND cs.cm_code = #{cm_code}
 	</select>
 	
+	<select id="cartCnt" resultType="int">
+		SELECT count(*) as cartCnt FROM tblcartsub WHERE cm_code 
+		= (SELECT cm_code FROM tblcartmain WHERE m_id = #{m_id})
+	</select>
+	
 </mapper>

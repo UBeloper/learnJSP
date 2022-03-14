@@ -5,7 +5,7 @@
 <mapper namespace="com.it.mapper.ProductMapper">
 
 	<select id="getList" resultType="com.it.domain.ProductVO">
-		select * from tblproduct2 order by p_code asc
+		select * from tblproduct2 order by p_code desc limit #{pageAmount} offset ${(pageNum-1)*pageAmount};
 	</select>
 	
 	<insert id="insert">
@@ -26,5 +26,9 @@
 	<delete id="delete">
 		delete from tblproduct2 where p_code = #{p_code}
 	</delete>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(p_code) from tblproduct; 
+	</select>
 	
 </mapper>

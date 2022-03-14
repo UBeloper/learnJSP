@@ -104,6 +104,11 @@ public class CartServiceImpl implements CartService {
 		mapper.deletesuball(cartmain);
 		mapper.deleteMain(cartmain);
 	}
+
+	@Override
+	public int cartCnt(CartmainVO cartmain) {
+			return mapper.cartCnt(cartmain);
+	}
 	
 	
 	

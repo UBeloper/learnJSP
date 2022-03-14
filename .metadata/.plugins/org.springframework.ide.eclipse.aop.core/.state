@@ -3,6 +3,6 @@
 <aop-project name="MySpring"/>
 <aop-project name="ShopMember"/>
 <aop-project name="ExamSpring"/>
-<aop-project name="ShopAdmin"/>
 <aop-project name="ExamWinter"/>
+<aop-project name="ShopAdmin"/>
 </aop-reference-model>

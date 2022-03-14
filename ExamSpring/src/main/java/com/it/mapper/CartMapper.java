@@ -32,5 +32,7 @@ public interface CartMapper {
 	
 	public List<CartdetailDTO> getListCartDetail(CartmainVO cartmain);
 	public CartmemberDTO getCartTotal(CartmainVO cartmain);
+	
+	public int cartCnt(CartmainVO cartmain);
 		
 }
