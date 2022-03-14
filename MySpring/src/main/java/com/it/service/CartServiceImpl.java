@@ -27,6 +27,7 @@ public class CartServiceImpl implements CartService {
 		cm = mapper.readMainID(cartmain); // 세션 아이디를 인수로 조회하여 결과 얻기
 
 		if (cm == null) { // cartmain에 해당사용자의 레코드 1개를 신규생성해야 함.
+			
 			mapper.insertMain(cartmain);
 			// cm_code가 생성되었으나 조회해봐야 알 수 있음.
 			cm = mapper.readMainID(cartmain); // 해당사용자로 신규 추가 후 조회

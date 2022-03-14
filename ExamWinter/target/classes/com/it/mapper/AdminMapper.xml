@@ -5,7 +5,9 @@
 <mapper namespace="com.it.mapper.AdminMapper">
 
 	<select id="read" resultType="com.it.domain.AdminVO">
-		select * from tbladmin where a_id = #{a_id}
+		SELECT * FROM tbladmin 
+		WHERE a_id = #{a_id}
+		AND a_passwd = hex(aes_encrypt(#{a_passwd}, sha2('123!', 512)))
 	</select>
 	
 </mapper>

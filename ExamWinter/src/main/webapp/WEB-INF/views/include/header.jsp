@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>관리자 페이지</title>
+        <title>관리자</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/resources/assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -22,21 +22,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/">쇼핑몰연습</a>
+                <a class="navbar-brand" href="/">쇼핑몰</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/">Products</a></li>
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> -->
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/proudct/list">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/product/list">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/member/list">Members</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/orders/list">Orders</a></li>
                     </ul>
                     
                     <form class="d-flex">
@@ -47,11 +40,11 @@
                         </button>
                     </form>
                     <button class="btn btn-outline-dark" type="button">
-                    	   <c:if test="${!empty session_id}">
-                           <a href="/member/logout"><b>LOGOUT</b></a>
+                    	   <c:if test="${!empty a_id}">
+                           <a href="/admin/logout"><b>LOGOUT</b></a>
                            </c:if>
-                           <c:if test="${empty session_id}">
-                           <a href="/member/login"><b>LOGIN</b></a>
+                           <c:if test="${empty a_id}">
+                           <a href="/admin/login"><b>LOGIN</b></a>
                            </c:if>
                     </button>
                 </div>

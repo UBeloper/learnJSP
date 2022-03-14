@@ -12,4 +12,7 @@ public interface MemberMapper {
 	public void delete(MemberVO member);
 	public void update(MemberVO member);
 	
+	// 회원가입 아이디 중복체크
+	public int idCheck(MemberVO member);
+	
 }

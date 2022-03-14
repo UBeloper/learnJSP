@@ -29,7 +29,6 @@
 		AND cs.cm_code = #{cm_code}
 	</select>
 	
-		
 	<select id="readMain" resultType="com.it.domain.CartmainVO">
 		SELECT * FROM tblcartmain WHERE #{cm_code}
 	</select>

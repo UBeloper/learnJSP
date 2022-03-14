@@ -25,4 +25,8 @@
 		where m_id = #{m_id}
 	</update>
 	
+	<select id="idCheck" resultType="int">
+		SELECT count(*) FROM tblmember WHERE m_id = #{m_id} 
+	</select>	
+	
 </mapper>

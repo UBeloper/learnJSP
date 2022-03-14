@@ -62,38 +62,24 @@ public class ProductController {
 	public void imgupload(HttpServletRequest request) {
 		DiskFileUpload upload = new DiskFileUpload(); // 파일전송 컴포넌트 객체 생성
 		
-/* DiskFileUpload
- 이 클래스는 RFC 1867multipart/mixed 에 지정된 인코딩 유형을 사용하여 전송된 단일 HTML 위젯당 여러 파일을 처리합니다.
- 주어진 HTML 위젯과 연결된 목록을 얻는 데 사용 합니다. 개별 부품은 크기에 따라 임시 디스크 저장소 또는 메모리에 저장되며,
- FileItems로 사용할 수 있습니다. 
-*/
-		
 		try {
 		List items = upload.parseRequest(request); // 웹브라우저 전송 객체 생성해서 업로드 컴포넌트
 		Iterator params = items.iterator(); // 반복자 생성
-		
-//		log.info("items : " + items);
-//		log.info("params : " + params);
-//		log.info("params.Next() : " + params.next());
-		
-//		log.info(items.size());
-		
+				
 		// *저장위치*
-		//product 폴더 -> 우클릭 -> properties
-		String imgpath = "C:\\MyWorkSpace\\learnJsp\\MySpring\\src\\main\\webapp\\resources\\product";
+		String imgpath = "C:\\MyWorkSpace\\learnJsp\\ExamWinter\\src\\main\\webapp\\resources\\product";
 		String p_code = "";
 		
 		
 		while(params.hasNext()) { // form 객체가 있을경우
 			FileItem item = (FileItem)params.next(); // 폼객체를 변수에 저장
+			log.info("item : " + item);
 			
 			if(item.isFormField()) { // 파일 형식이 아니라면
 				p_code = item.getString();
-				
+				log.info("p_code : " + p_code);
 //				log.info("상품코드 : " + item); // item 확인하기 위해 내가 찍어봄.
-				
-//				String data = item.getString();
-//				log.info(data);
+
 				
 			}else { // 바이너리 파일이라면
 				File imgfile = new File(imgpath + "/" + p_code + ".jpg"); //파일객체 생성
@@ -103,8 +89,6 @@ public class ProductController {
 	
 //				String data = item.getName(); // 파일 이름이라면 getName으로 출력
 //				log.info(data);
-				
-				
 				
 			}
 		}

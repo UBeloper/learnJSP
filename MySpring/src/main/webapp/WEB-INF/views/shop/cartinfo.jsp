@@ -43,6 +43,7 @@
 								<td>${cartsub.p_price}</td>
 								
 								<td>
+								
 									<form action="/shop/cartupdate" method="post">
 									<input type="hidden" name="cs_code" value="${cartsub.cs_code}">
 									<select name="cs_cnt">
@@ -59,6 +60,7 @@
 									<input type="submit" value="수정">
 									</form>
 									&nbsp;<a href="/shop/cartdelete?cs_code=${cartsub.cs_code}&cm_code=${cm_code}">삭제</a>
+									
 								</td>
 								
 								<td>${cartsub.cs_money}</td>
@@ -72,8 +74,8 @@
 								<%-- 아니면 이렇게도 가능 <fmt: value="" pattern="" /> --%>
 							
 							<c:if test="${not empty cm_code}">
-							<a href="/shop/cartdeleteall?cm_code=${cm_code}">상품 모두 삭제</a>
-							<a href="/shop/orderinfo?cm_code=${cm_code}">상품 주문</a>
+								<a href="/shop/cartdeleteall?cm_code=${cm_code}">상품 모두 삭제</a>
+								<a href="/shop/orderinfo?cm_code=${cm_code}">상품 주문</a>
 							</c:if>
 							
 							</th>

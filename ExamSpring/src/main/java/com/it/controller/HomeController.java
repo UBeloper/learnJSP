@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.it.mapper.ProductMapper;
+import com.it.service.ProductService;
 
 import lombok.Setter;
 
@@ -24,7 +24,7 @@ import lombok.Setter;
 public class HomeController {
 	
 	@Setter(onMethod_ = @Autowired)
-	private ProductMapper mapper;
+	private ProductService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 		
@@ -33,8 +33,8 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 				
 		String m_id = (String)session.getAttribute("m_id");
-		model.addAttribute("session_id", m_id);
-		model.addAttribute("product_list", mapper.getList());
+		model.addAttribute("m_id", m_id);
+		model.addAttribute("list", service.getList());
 		
 		return "index";
 	}

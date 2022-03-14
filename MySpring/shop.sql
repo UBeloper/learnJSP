@@ -100,6 +100,8 @@ create table tblmember (
 	m_udate datetime not null default sysdate()
 );
 
+select * from tblmember;
+
 alter table tblmember auto_increment=1001;
 
 /* 상품 테이블 */
@@ -112,6 +114,17 @@ create table tblproduct (
 );
 alter table tblproduct auto_increment=1001;
 
+create table tblproduct2 (
+	p_code int not null primary key auto_increment,
+	p_name varchar(100) not null,
+	p_price int not null,
+--	p_file varchar(200) null,
+	p_rdate datetime not null default sysdate(),
+	p_udate datetime not null default sysdate()
+)
+
+drop table tblproduct2;
+select * from tblproduct2;
 
 /* 장바구니 main */
 create table tblcartmain (
@@ -185,7 +198,17 @@ insert into tblproduct (p_name, p_price) values ('종이컵100개입', 5000);
 insert into tblproduct (p_name, p_price) values ('매일우유1L', 4000);
 insert into tblproduct (p_name, p_price) values ('초코파이12개입', 5000);
 
+insert into tblproduct2 (p_name, p_price) values ('삼성냉장고200리터', 1000000);
+insert into tblproduct2 (p_name, p_price) values ('엘지세탁기10리터', 800000);
+insert into tblproduct2 (p_name, p_price) values ('농심새우깡', 2000);
+insert into tblproduct2 (p_name, p_price) values ('롯데콘칩', 1000);
+insert into tblproduct2 (p_name, p_price) values ('참이슬360ml', 2000);
+insert into tblproduct2 (p_name, p_price) values ('종이컵100개입', 5000);
+insert into tblproduct2 (p_name, p_price) values ('매일우유1L', 4000);
+insert into tblproduct2 (p_name, p_price) values ('초코파이12개입', 5000);
+
 select * from tblproduct;
+select * from tblproduct2;
 
 -- 카트 임시데이터 -- 
 insert into tblcartmain (m_id) values ('tiger');
@@ -248,6 +271,8 @@ select sum(p.p_price * os.os_cnt)
 			
 desc tblmember;
 
+
+select * from tblproduct;
 
 
 

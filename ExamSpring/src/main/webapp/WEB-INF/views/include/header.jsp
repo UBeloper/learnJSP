@@ -47,10 +47,10 @@
                         </button>
                     </form>
                     <button class="btn btn-outline-dark" type="button">
-                    	   <c:if test="${!empty session_id}">
+                    	   <c:if test="${!empty m_id}">
                            <a href="/member/logout"><b>LOGOUT</b></a>
                            </c:if>
-                           <c:if test="${empty session_id}">
+                           <c:if test="${empty m_id}">
                            <a href="/member/login"><b>LOGIN</b></a>
                            </c:if>
                     </button>

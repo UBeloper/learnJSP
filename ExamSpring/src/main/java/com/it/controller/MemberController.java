@@ -37,6 +37,7 @@ public class MemberController {
 			session.setAttribute("m_id", member.getM_id());
 			log.info("LOGIN 세션생성");
 			return "redirect:/";
+			
 		} else {
 			log.info("인증실패");
 			return "redirect:/member/login";
@@ -51,6 +52,17 @@ public class MemberController {
 
 	@GetMapping("/regist")
 	public void getregistpage() {
+	}
+	
+	@PostMapping("/regist")
+	public String regist(MemberVO member) {
+		if(service.idCheck(member) == 1) {
+			log.info(member);
+			return "redirect:/member/regist";
+		} else {
+			service.insert(member);
+			return "redirect:/member/login";
+		}
 		
 	}
 	

@@ -23,7 +23,6 @@ public interface CartMapper {
 	public CartmainVO readMain(CartmainVO cartmain);
 	public CartsubVO readSub(CartsubVO cartsub);
 	
-	
 	public CartmainVO readMainID(CartmainVO cartmain);
 	
 	public CartsubVO readSubProduct(CartsubVO cartsub);

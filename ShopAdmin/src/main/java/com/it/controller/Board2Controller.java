@@ -164,8 +164,7 @@ public class Board2Controller {
 			
 			log.info("file : " + file);
 			FileInputStream fis = new FileInputStream(filepath); // 객체를 생성할 때 데이터를 읽어올 파일을 지정
-			OutputStream out = response.getOutputStream(); 	
-			// 바이트단위 파일처리 
+			OutputStream out = response.getOutputStream(); // 바이트단위 파일처리 
 			
 			
 //			log.info("out : " + out);

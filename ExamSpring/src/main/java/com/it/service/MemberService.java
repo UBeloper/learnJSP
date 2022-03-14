@@ -13,4 +13,6 @@ public interface MemberService {
 	public void delete(MemberVO member);
 	
 	public boolean auth(MemberVO member);
+	
+	public int idCheck(MemberVO member);
 }

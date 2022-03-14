@@ -64,6 +64,11 @@ public class MemberServiceImpl implements MemberService {
 			}
 		}		
 	}
+
+	@Override
+	public int idCheck(MemberVO member) {
+		return mapper.idCheck(member);
+	}
 	
 
 	
