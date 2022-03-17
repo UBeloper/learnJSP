@@ -54,7 +54,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public CartmainVO readMainID(CartmainVO cartmain) {
-		cartmain = mapper.readMainID(cartmain); //특정사용자 ID로 조회
+		cartmain = mapper.readMainID(cartmain); // 특정사용자 ID로 조회
 		return cartmain;
 	}
 

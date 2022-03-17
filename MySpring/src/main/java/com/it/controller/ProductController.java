@@ -67,7 +67,7 @@ public class ProductController {
 		Iterator params = items.iterator(); // 반복자 생성
 				
 		// *저장위치*
-		String imgpath = "C:\\MyWorkSpace\\learnJsp\\ExamWinter\\src\\main\\webapp\\resources\\product";
+		String imgpath = "C:\\MyWorkSpace\\learnJsp\\MySpring\\src\\main\\webapp\\resources\\product";
 		String p_code = "";
 		
 		
@@ -82,6 +82,7 @@ public class ProductController {
 
 				
 			}else { // 바이너리 파일이라면
+				
 				File imgfile = new File(imgpath + "/" + p_code + ".jpg"); //파일객체 생성
 				item.write(imgfile);
 
