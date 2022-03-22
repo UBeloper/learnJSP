@@ -114,14 +114,16 @@ create table tblproduct (
 );
 alter table tblproduct auto_increment=1001;
 
+select * from tblproduct;
+
 create table tblproduct2 (
 	p_code int not null primary key auto_increment,
 	p_name varchar(100) not null,
 	p_price int not null,
---	p_file varchar(200) null,
+	p_file varchar(200) null,
 	p_rdate datetime not null default sysdate(),
 	p_udate datetime not null default sysdate()
-)
+);
 
 alter table tblproduct2 auto_increment=1001;
 
