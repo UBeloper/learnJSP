@@ -43,6 +43,8 @@ C:\MyWorkSpace\learnJSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\28
 \ExamSummer\src\main\java
 C:\MyWorkSpace\learnJSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\399420868.index
 \MySpring\src\main\java
+C:\MyWorkSpace\learnJSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\826902542.index
+\HiSpring\src\main\java
 C:\MyWorkSpace\learnJSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1489200430.index
 \ShopAdmin\src\main\java
 C:\MyWorkSpace\learnJSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2212501765.index
